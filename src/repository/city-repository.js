@@ -37,7 +37,7 @@ class CityRepository {
       throw { error };
     }
   }
-  
+
   //   4 update city
   async updateCity(cityId, data) {
     try {
