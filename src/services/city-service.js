@@ -16,7 +16,6 @@ class CityService {
   }
 
   async deleteCity(cityId) {
-    // <-- Accept cityId as a parameter
     try {
       const response = await this.cityRepository.deleteCity(cityId);
       return response;
@@ -47,4 +46,4 @@ class CityService {
   }
 }
 
-module.exports = CityService;
+module.exports = { CityService };
