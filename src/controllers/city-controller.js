@@ -1,6 +1,7 @@
 const { CityService } = require("../services/index");
 
 const cityService = new CityService(); // cityservice is a class thats why we are creating obkect of cityservice
+
 /**
  * POST
  * "city" : "New Delhi"
