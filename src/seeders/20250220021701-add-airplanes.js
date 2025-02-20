@@ -12,31 +12,30 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-
-    await queryInterface.bulkInsert(
-      "Airports",
+    queryInterface.bulkInsert(
+      "Airplanes",
       [
         {
-          name: "Kempegowda International Airport ",
-          cityId: 2,
+          modelNumber: "Boeing 737",
+          capacity: 300,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Mysuru International Airport ",
-          cityId: 2,
+          modelNumber: "Airbus A320",
+          capacity: 400,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Mengluru International Airport ",
-          cityId: 2,
+          modelNumber: "Boeing 777",
+          capacity: 320,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Indira Gandhi International Airport ",
-          cityId: 12,
+          modelNumber: "Airbus A320",
+          capacity: 350,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
