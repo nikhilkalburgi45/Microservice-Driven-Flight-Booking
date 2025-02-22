@@ -14,7 +14,7 @@ class CrudRepository {
 
   async destroy(modelId) {
     try {
-      const result = await this.model.create({
+      const result = await this.model.des({
         where: {
           id: modelId,
         },
@@ -50,6 +50,7 @@ class CrudRepository {
           id: modelId,
         },
       });
+      return result;
     } catch (error) {
       console.log("Something went on crud repo");
     }
