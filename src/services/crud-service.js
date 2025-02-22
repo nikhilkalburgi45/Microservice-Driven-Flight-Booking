@@ -5,54 +5,58 @@ class CrudService {
 
   async create(data) {
     try {
-      const response = await this.repository.create(data);
-      return response;
+      return await this.repository.create(data);
     } catch (error) {
-      console.log("Something went wrong on crud service");
+      console.log("Error in CrudService create:", error);
+      throw error;
     }
   }
 
   async destroy(modelId) {
     try {
-      const result = await this.repository.destroy({
-        where: {
-          id: modelId,
-        },
-      });
+      const result = await this.repository.destroy(modelId); // FIXED
+      if (!result) {
+        throw new Error(`No record found with id: ${modelId}`);
+      }
       return true;
     } catch (error) {
-      console.log("Something went on crud service");
+      console.log("Error in CrudService destroy:", error);
+      throw error;
     }
   }
 
   async get(modelId) {
     try {
-      const result = await this.repository.findByPk(modelId);
+      const result = await this.repository.get(modelId); // FIXED
+      if (!result) {
+        throw new Error(`No record found with id: ${modelId}`);
+      }
       return result;
     } catch (error) {
-      console.log("Something went on crud service");
+      console.log("Error in CrudService get:", error);
+      throw error;
     }
   }
 
   async getAll() {
     try {
-      const result = await this.repository.findAll();
-      return result;
+      return await this.repository.getAll(); // FIXED
     } catch (error) {
-      console.log("Something went on crud service");
+      console.log("Error in CrudService getAll:", error);
+      throw error;
     }
   }
 
   async update(modelId, data) {
     try {
-      const result = await this.repository.update(data, {
-        where: {
-          id: modelId,
-        },
-      });
-      return result;
+      const updatedRecord = await this.repository.update(modelId, data); // FIXED
+      if (!updatedRecord) {
+        throw new Error(`No record found to update with id: ${modelId}`);
+      }
+      return updatedRecord;
     } catch (error) {
-      console.log("Something went on crud service");
+      console.log("Error in CrudService update:", error);
+      throw error;
     }
   }
 }
