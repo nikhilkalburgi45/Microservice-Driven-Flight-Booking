@@ -2,7 +2,6 @@ const { Flights } = require("../models/index");
 const { Op } = require("sequelize");
 
 class FlightRepository {
-  
   #createFilter(data) {
     let filter = {};
 
@@ -53,6 +52,19 @@ class FlightRepository {
         where: filterObject,
       });
       return flight;
+    } catch (error) {
+      console.log("Something went wrong on the repo layer");
+      throw { error };
+    }
+  }
+
+  async updateFlight(flightId, data) {
+    try {
+      await Flights.update(data, {
+        where: {
+          id: flightId,
+        },
+      });
     } catch (error) {
       console.log("Something went wrong on the repo layer");
       throw { error };
